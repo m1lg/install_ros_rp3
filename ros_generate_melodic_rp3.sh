@@ -45,7 +45,7 @@ OUTPUT="$(ls -l)"
 echo "${OUTPUT}"
 
 git clone https://github.com/orocos/orocos_kinematics_dynamics.git
-cd orocus*
+cd orocos*
 cd orocus_kdl
 mkdir build
 cd build
