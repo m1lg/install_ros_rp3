@@ -63,7 +63,7 @@ bash ../ros_generate_melodic_rp3.sh $name_ros_version
 sudo apt-get purge -y libtinyxml2-dev
 sudo apt auto-remove -y
 
-sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/$name_ros_version -j4
+sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/$name_ros_version -j2
 source /opt/ros/$name_ros_version/setup.sh
 
 echo "[Initialize rosdep]"
@@ -72,11 +72,12 @@ rosdep update
 
 rosrun turtlebot3_bringup create_udev_rules
 
-echp "[OpenCR setup]"
+echo "[OpenCR setup]"
 export OPENCR_PORT=/dev/ttyACM0
-export OPENCR_MODEL=waffle
+export OPENCR_MODEL=burger
 rm -rf ./opencr_update.tar.bz2
 wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS1/latest/opencr_update.tar.bz2 && tar -xvf opencr_update.tar.bz2 && cd ./opencr_update && ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr && cd ..
+
 
 echo "[Complete!!!]"
 read

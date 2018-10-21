@@ -44,32 +44,32 @@ cd ../..
 OUTPUT="$(ls -l)"
 echo "${OUTPUT}"
 
-git clone https://github.com/orocos/orocos_kinematics_dynamics.git
+git clone -b release-1.3 https://github.com/orocos/orocos_kinematics_dynamics.git
 cd oroc*
-cd orocus_kdl
+cd orocos_kdl
 mkdir build
 cd build
-cmake ..
-make
+#cmake ..
+#make
 sudo make install
 cd ../..
 
-cd ./python_orocus_kdl
+cd ./python_oroc*
 mkdir build
 cd build
-cmake ..
-make
+#cmake ..
+#make
 sudo make install
 cd ../../..
 
-https://github.com/leethomason/tinyxml2.git
+git clone https://github.com/leethomason/tinyxml2.git
 cd ./tinyxml2
 mkdir build
 cd build
 cmake ..
 make
 sudo make install
-cd ../
+cd ../../..
 
 rosdep install -y --from-paths src --ignore-src --rosdistro $name_ros_version -r --os=debian:stretch
 rosdep install -y --from-paths src --ignore-src --rosdistro $name_ros_version -r --os=debian:stretch
